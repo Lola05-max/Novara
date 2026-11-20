@@ -411,7 +411,7 @@ function setLanguage(language) {
 }
 
 function discover() {
-  const value = document.getElementById("object").value.trim();
+const value = document.getElementById("object").value.trim();
   const result = document.getElementById("result");
   const text = translations[currentLanguage];
 
@@ -419,6 +419,13 @@ function discover() {
     result.textContent = text.emptyMessage;
     return;
   }
+
+  result.textContent = text.resultStart + value + text.resultEnd;
+const value = document.getElementById("object").value.trim();
+  const result = document.getElementById("result");
+  const text = translations[currentLanguage];
+  
+  
 
   result.textContent = text.resultStart + value + text.resultEnd;
 }
