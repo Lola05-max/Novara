@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVARA — Give Things a Second Life</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#090909;color:#f5f3ed;font-family:Arial,sans-serif}
+header{padding:24px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
+.logo{font-size:27px;letter-spacing:7px;font-weight:bold}
+nav a{color:#bbb;text-decoration:none;margin-left:20px;font-size:13px}
+.hero{padding:110px 8% 90px;max-width:1100px;margin:auto}
+.tag{color:#c9a96e;letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(48px,9vw,100px);line-height:.98;margin:28px 0}
+h1 span{color:#c9a96e}
+.hero p{color:#aaa;line-height:1.8;max-width:490px;font-size:17px}
+.btn{display:inline-block;margin-top:32px;background:#c9a96e;color:#090909;padding:16px 25px;text-decoration:none;font-weight:bold;border:0;cursor:pointer}
+section{padding:75px 8%;border-top:1px solid #292929}
+h2{font-size:36px;margin:15px 0 25px}
+.muted{color:#aaa;line-height:1.8}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:35px}
+.card{background:#151515;border:1px solid #303030;padding:28px;min-height:180px}
+.card b{display:block;font-size:19px;margin:15px 0}
+.card p{color:#999;line-height:1.6;font-size:14px}
+input{width:100%;padding:16px;background:#171717;color:white;border:1px solid #555;margin-top:15px}
+#result{margin-top:20px;color:#c9a96e;line-height:1.8}
+footer{padding:35px 8%;color:#777;border-top:1px solid #292929;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">NOVARA.</div>
+<nav>
+<a href="#about">About</a>
+<a href="#lab">AI Lab</a>
+<a href="#vision">Vision</a>
+</nav>
+</header>
+
+<main>
+<div class="hero">
+<div class="tag">A NEW WAY TO THINK ABOUT THINGS</div>
+<h1>GIVE THINGS<br>A <span>SECOND LIFE.</span></h1>
+<p>Discover the hidden potential of everyday objects. NOVARA helps you rethink, repair and reinvent the things around you.</p>
+<a class="btn" href="#lab">EXPLORE NOVARA ↗</a>
+</div>
+
+<section id="about">
+<div class="tag">OUR MISSION</div>
+<h2>Waste less. Imagine more.</h2>
+<p class="muted">We believe that old things can become extraordinary again. NOVARA is a platform concept connecting creativity, technology and sustainability.</p>
+<div class="cards">
+<div class="card">01 <b>RETHINK</b><p>See everyday objects from a completely new perspective.</p></div>
+<div class="card">02 <b>REPAIR</b><p>Discover ways to give useful things a longer life.</p></div>
+<div class="card">03 <b>REINVENT</b><p>Turn forgotten objects into creative new ideas.</p></div>
+</div>
+</section>
+
+<section id="lab">
+<div class="tag">NOVARA AI LAB</div>
+<h2>What could it become?</h2>
+<p class="muted">Enter an object and discover a creative idea for its second life.</p>
+<input id="object" placeholder="e.g. old glass jar, cardboard box...">
+<button class="btn" onclick="discover()">DISCOVER IDEAS ↗</button>
+<div id="result"></div>
+</section>
+
+<section id="vision">
+<div class="tag">THE FUTURE</div>
+<h2>Make every object count.</h2>
+<p class="muted">Our vision is a world where creativity replaces waste and technology makes sustainable choices easier.</p>
+</section>
+</main>
+
+<footer>
+NOVARA © 2026 — GIVE THINGS A SECOND LIFE.
+</footer>
+
+<script>
+function discover(){
+const value=document.getElementById('object').value.trim();
+const result=document.getElementById('result');
+if(!value){result.textContent="Please enter an object first.";return;}
+result.textContent="✨ Your NOVARA idea: "+value+" could become a creative DIY project, a useful storage solution, or something you can repair and reuse. This is a demo suggestion, not an AI analysis yet.";
+}
+</script>
+</body>
+</html>
