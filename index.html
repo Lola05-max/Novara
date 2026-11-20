@@ -1,90 +1,429 @@
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NOVARA — Give Things a Second Life</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#090909;color:#f5f3ed;font-family:Arial,sans-serif}
-header{padding:24px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292929}
-.logo{font-size:27px;letter-spacing:7px;font-weight:bold}
-nav a{color:#bbb;text-decoration:none;margin-left:20px;font-size:13px}
-.hero{padding:110px 8% 90px;max-width:1100px;margin:auto}
-.tag{color:#c9a96e;letter-spacing:4px;font-size:12px}
-h1{font-size:clamp(48px,9vw,100px);line-height:.98;margin:28px 0}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:#090909;
+  color:#f5f3ed;
+  font-family:Arial,sans-serif;
+}
+
+header{
+  padding:24px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #292929;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.logo{
+  font-size:27px;
+  letter-spacing:7px;
+  font-weight:bold;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+nav a{
+  color:#bbb;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:13px;
+}
+
+nav a:hover{color:#c9a96e}
+
+.languages{
+  display:flex;
+  gap:7px;
+}
+
+.languages button{
+  background:transparent;
+  border:1px solid #555;
+  color:#aaa;
+  padding:8px 11px;
+  cursor:pointer;
+}
+
+.languages button.active{
+  color:#090909;
+  background:#c9a96e;
+  border-color:#c9a96e;
+}
+
+.hero{
+  padding:110px 8% 90px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.tag{
+  color:#c9a96e;
+  letter-spacing:4px;
+  font-size:12px;
+}
+
+h1{
+  font-size:clamp(48px,9vw,100px);
+  line-height:.98;
+  margin:28px 0;
+}
+
 h1 span{color:#c9a96e}
-.hero p{color:#aaa;line-height:1.8;max-width:490px;font-size:17px}
-.btn{display:inline-block;margin-top:32px;background:#c9a96e;color:#090909;padding:16px 25px;text-decoration:none;font-weight:bold;border:0;cursor:pointer}
-section{padding:75px 8%;border-top:1px solid #292929}
-h2{font-size:36px;margin:15px 0 25px}
-.muted{color:#aaa;line-height:1.8}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:35px}
-.card{background:#151515;border:1px solid #303030;padding:28px;min-height:180px}
-.card b{display:block;font-size:19px;margin:15px 0}
-.card p{color:#999;line-height:1.6;font-size:14px}
-input{width:100%;padding:16px;background:#171717;color:white;border:1px solid #555;margin-top:15px}
-#result{margin-top:20px;color:#c9a96e;line-height:1.8}
-footer{padding:35px 8%;color:#777;border-top:1px solid #292929;font-size:13px}
+
+.hero p{
+  color:#aaa;
+  line-height:1.8;
+  max-width:490px;
+  font-size:17px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:32px;
+  background:#c9a96e;
+  color:#090909;
+  padding:16px 25px;
+  text-decoration:none;
+  font-weight:bold;
+  border:0;
+  cursor:pointer;
+}
+
+.btn:hover{background:#e0c18a}
+
+section{
+  padding:75px 8%;
+  border-top:1px solid #292929;
+}
+
+h2{
+  font-size:36px;
+  margin:15px 0 25px;
+}
+
+.muted{
+  color:#aaa;
+  line-height:1.8;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+  margin-top:35px;
+}
+
+.card{
+  background:#151515;
+  border:1px solid #303030;
+  padding:28px;
+  min-height:180px;
+}
+
+.card b{
+  display:block;
+  font-size:19px;
+  margin:15px 0;
+}
+
+.card p{
+  color:#999;
+  line-height:1.6;
+  font-size:14px;
+}
+
+input{
+  width:100%;
+  padding:16px;
+  background:#171717;
+  color:white;
+  border:1px solid #555;
+  margin-top:15px;
+  font-size:16px;
+}
+
+#result{
+  margin-top:20px;
+  color:#c9a96e;
+  line-height:1.8;
+}
+
+footer{
+  padding:35px 8%;
+  color:#777;
+  border-top:1px solid #292929;
+  font-size:13px;
+}
+
+@media(max-width:650px){
+  header{padding:20px 6%}
+  .header-right{
+    width:100%;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+  }
+  nav a{margin-left:0;margin-right:13px}
+  .hero{padding:85px 7% 70px}
+  section{padding:65px 7%}
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">NOVARA.</div>
-<nav>
-<a href="#about">About</a>
-<a href="#lab">AI Lab</a>
-<a href="#vision">Vision</a>
-</nav>
+  <div class="logo">NOVARA.</div>
+
+  <div class="header-right">
+    <nav>
+      <a href="#about" data-i18n="navAbout">About</a>
+      <a href="#lab" data-i18n="navLab">AI Lab</a>
+      <a href="#vision" data-i18n="navVision">Vision</a>
+    </nav>
+
+    <div class="languages">
+      <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
+      <button id="deBtn" onclick="setLanguage('de')">DE</button>
+    </div>
+  </div>
 </header>
 
 <main>
+
 <div class="hero">
-<div class="tag">A NEW WAY TO THINK ABOUT THINGS</div>
-<h1>GIVE THINGS<br>A <span>SECOND LIFE.</span></h1>
-<p>Discover the hidden potential of everyday objects. NOVARA helps you rethink, repair and reinvent the things around you.</p>
-<a class="btn" href="#lab">EXPLORE NOVARA ↗</a>
+  <div class="tag" data-i18n="heroTag">
+    A NEW WAY TO THINK ABOUT THINGS
+  </div>
+
+  <h1>
+    <span data-i18n="heroLine1">GIVE THINGS</span><br>
+    <span data-i18n="heroLine2">A SECOND LIFE.</span>
+  </h1>
+
+  <p data-i18n="heroText">
+    Discover the hidden potential of everyday objects.
+    NOVARA helps you rethink, repair and reinvent the things around you.
+  </p>
+
+  <a class="btn" href="#lab" data-i18n="heroButton">
+    EXPLORE NOVARA ↗
+  </a>
 </div>
 
 <section id="about">
-<div class="tag">OUR MISSION</div>
-<h2>Waste less. Imagine more.</h2>
-<p class="muted">We believe that old things can become extraordinary again. NOVARA is a platform concept connecting creativity, technology and sustainability.</p>
-<div class="cards">
-<div class="card">01 <b>RETHINK</b><p>See everyday objects from a completely new perspective.</p></div>
-<div class="card">02 <b>REPAIR</b><p>Discover ways to give useful things a longer life.</p></div>
-<div class="card">03 <b>REINVENT</b><p>Turn forgotten objects into creative new ideas.</p></div>
-</div>
+  <div class="tag" data-i18n="missionTag">OUR MISSION</div>
+
+  <h2 data-i18n="missionTitle">Waste less. Imagine more.</h2>
+
+  <p class="muted" data-i18n="missionText">
+    We believe that old things can become extraordinary again.
+    NOVARA is a platform concept connecting creativity, technology and sustainability.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      01
+      <b data-i18n="rethinkTitle">RETHINK</b>
+      <p data-i18n="rethinkText">
+        See everyday objects from a completely new perspective.
+      </p>
+    </div>
+
+    <div class="card">
+      02
+      <b data-i18n="repairTitle">REPAIR</b>
+      <p data-i18n="repairText">
+        Discover ways to give useful things a longer life.
+      </p>
+    </div>
+
+    <div class="card">
+      03
+      <b data-i18n="reinventTitle">REINVENT</b>
+      <p data-i18n="reinventText">
+        Turn forgotten objects into creative new ideas.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="lab">
-<div class="tag">NOVARA AI LAB</div>
-<h2>What could it become?</h2>
-<p class="muted">Enter an object and discover a creative idea for its second life.</p>
-<input id="object" placeholder="e.g. old glass jar, cardboard box...">
-<button class="btn" onclick="discover()">DISCOVER IDEAS ↗</button>
-<div id="result"></div>
+  <div class="tag" data-i18n="labTag">NOVARA AI LAB</div>
+
+  <h2 data-i18n="labTitle">What could it become?</h2>
+
+  <p class="muted" data-i18n="labText">
+    Enter an object and discover a creative idea for its second life.
+  </p>
+
+  <input
+    id="object"
+    type="text"
+    data-i18n-placeholder="inputPlaceholder"
+    placeholder="e.g. old glass jar, cardboard box..."
+  >
+
+  <button class="btn" onclick="discover()" data-i18n="labButton">
+    DISCOVER IDEAS ↗
+  </button>
+
+  <div id="result" aria-live="polite"></div>
 </section>
 
 <section id="vision">
-<div class="tag">THE FUTURE</div>
-<h2>Make every object count.</h2>
-<p class="muted">Our vision is a world where creativity replaces waste and technology makes sustainable choices easier.</p>
+  <div class="tag" data-i18n="visionTag">THE FUTURE</div>
+
+  <h2 data-i18n="visionTitle">Make every object count.</h2>
+
+  <p class="muted" data-i18n="visionText">
+    Our vision is a world where creativity replaces waste
+    and technology makes sustainable choices easier.
+  </p>
 </section>
+
 </main>
 
-<footer>
-NOVARA © 2026 — GIVE THINGS A SECOND LIFE.
+<footer data-i18n="footer">
+  NOVARA © 2026 — GIVE THINGS A SECOND LIFE.
 </footer>
 
 <script>
-function discover(){
-const value=document.getElementById('object').value.trim();
-const result=document.getElementById('result');
-if(!value){result.textContent="Please enter an object first.";return;}
-result.textContent="✨ Your NOVARA idea: "+value+" could become a creative DIY project, a useful storage solution, or something you can repair and reuse. This is a demo suggestion, not an AI analysis yet.";
+
+const translations = {
+
+en: {
+  navAbout:"About",
+  navLab:"AI Lab",
+  navVision:"Vision",
+
+  heroTag:"A NEW WAY TO THINK ABOUT THINGS",
+  heroLine1:"GIVE THINGS",
+  heroLine2:"A SECOND LIFE.",
+  heroText:"Discover the hidden potential of everyday objects. NOVARA helps you rethink, repair and reinvent the things around you.",
+  heroButton:"EXPLORE NOVARA ↗",
+
+  missionTag:"OUR MISSION",
+  missionTitle:"Waste less. Imagine more.",
+  missionText:"We believe that old things can become extraordinary again. NOVARA is a platform concept connecting creativity, technology and sustainability.",
+
+  rethinkTitle:"RETHINK",
+  rethinkText:"See everyday objects from a completely new perspective.",
+  repairTitle:"REPAIR",
+  repairText:"Discover ways to give useful things a longer life.",
+  reinventTitle:"REINVENT",
+  reinventText:"Turn forgotten objects into creative new ideas.",
+
+  labTag:"NOVARA AI LAB",
+  labTitle:"What could it become?",
+  labText:"Enter an object and discover a creative idea for its second life.",
+  inputPlaceholder:"e.g. old glass jar, cardboard box...",
+  labButton:"DISCOVER IDEAS ↗",
+  emptyMessage:"Please enter an object first.",
+  resultStart:"✨ Your NOVARA idea: ",
+  resultEnd:" could become a creative DIY project, a useful storage solution, or something you can repair and reuse. This is a demo suggestion, not an AI analysis yet.",
+
+  visionTag:"THE FUTURE",
+  visionTitle:"Make every object count.",
+  visionText:"Our vision is a world where creativity replaces waste and technology makes sustainable choices easier.",
+
+  footer:"NOVARA © 2026 — GIVE THINGS A SECOND LIFE."
+},
+
+de: {
+  navAbout:"Über uns",
+  navLab:"KI-Labor",
+  navVision:"Vision",
+
+  heroTag:"EINE NEUE ART, DINGE ZU DENKEN",
+  heroLine1:"GIB DINGEN",
+  heroLine2:"EIN ZWEITES LEBEN.",
+  heroText:"Entdecke das verborgene Potenzial alltäglicher Gegenstände. NOVARA hilft dir, Dinge neu zu denken, zu reparieren und neu zu erfinden.",
+  heroButton:"NOVARA ENTDECKEN ↗",
+
+  missionTag:"UNSERE MISSION",
+  missionTitle:"Weniger verschwenden. Mehr vorstellen.",
+  missionText:"Wir glauben daran, dass alte Dinge wieder außergewöhnlich werden können. NOVARA ist ein Plattformkonzept, das Kreativität, Technologie und Nachhaltigkeit verbindet.",
+
+  rethinkTitle:"NEU DENKEN",
+  rethinkText:"Entdecke alltägliche Gegenstände aus einer völlig neuen Perspektive.",
+  repairTitle:"REPARIEREN",
+  repairText:"Finde Möglichkeiten, nützlichen Dingen ein längeres Leben zu geben.",
+  reinventTitle:"NEU ERFINDEN",
+  reinventText:"Verwandle vergessene Gegenstände in kreative neue Ideen.",
+
+  labTag:"NOVARA KI-LABOR",
+  labTitle:"Was könnte daraus werden?",
+  labText:"Gib einen Gegenstand ein und entdecke eine kreative Idee für sein zweites Leben.",
+  inputPlaceholder:"z. B. altes Einmachglas, Karton...",
+  labButton:"IDEEN ENTDECKEN ↗",
+  emptyMessage:"Bitte gib zuerst einen Gegenstand ein.",
+  resultStart:"✨ Deine NOVARA-Idee: Aus ",
+  resultEnd:" könnte ein kreatives DIY-Projekt, eine praktische Aufbewahrungslösung oder etwas zum Reparieren und Wiederverwenden entstehen. Dies ist ein Demo-Vorschlag und noch keine KI-Analyse.",
+
+  visionTag:"DIE ZUKUNFT",
+  visionTitle:"Jeder Gegenstand zählt.",
+  visionText:"Unsere Vision ist eine Welt, in der Kreativität Abfall ersetzt und Technologie nachhaltige Entscheidungen einfacher macht.",
+
+  footer:"NOVARA © 2026 — GIB DINGEN EIN ZWEITES LEBEN."
 }
+
+};
+
+let currentLanguage = "en";
+
+function setLanguage(language) {
+  currentLanguage = language;
+
+  document.documentElement.lang = language;
+
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.getAttribute("data-i18n");
+    element.textContent = translations[language][key];
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
+    const key = element.getAttribute("data-i18n-placeholder");
+    element.placeholder = translations[language][key];
+  });
+
+  document.getElementById("enBtn").classList.toggle("active", language === "en");
+  document.getElementById("deBtn").classList.toggle("active", language === "de");
+
+  document.getElementById("result").textContent = "";
+}
+
+function discover() {
+  const value = document.getElementById("object").value.trim();
+  const result = document.getElementById("result");
+  const text = translations[currentLanguage];
+
+  if (!value) {
+    result.textContent = text.emptyMessage;
+    return;
+  }
+
+  result.textContent = text.resultStart + value + text.resultEnd;
+}
+
 </script>
+
 </body>
 </html>
